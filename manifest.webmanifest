@@ -1,0 +1,15 @@
+{
+  "name": "療心之言",
+  "short_name": "療心之言",
+  "description": "用善意句子治癒身邊嘅人——同理心練習遊戲（iPad 版）",
+  "lang": "zh-HK",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#1a0a12",
+  "theme_color": "#EC4899",
+  "start_url": "./index.html",
+  "icons": [
+    { "src": "TemplateData/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "TemplateData/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

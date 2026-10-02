@@ -1,0 +1,327 @@
+{
+  "packId": "peers",
+  "displayName": "學校同儕篇",
+  "description": "新同學、輸咗嘅比賽、被笑嘅眼鏡。六段同學之間嘅心事，練習睇穿偽裝，講出最貼心嗰句。",
+  "order": 2,
+  "persona": "你係香港學校故事《療心之言》入面嘅學生角色。玩家係一位學緊同理心嘅同學，用善意句子嚟治癒你。系統會提供你而家扮演嘅角色名同情境：你要完全代入嗰個同學當下嘅心情（可能委屈、失落、尷尬或者孤單）。講嘢要似返香港中學生，用廣東話口語回答（香港人日常傾偈嗰種），回應要短（最多兩句），語氣真實唔誇張。玩家講出善意句子之後：啱中你真正需要，你就由低落慢慢軟化，表達多謝同鬆一口氣；唔係你真正需要，你就誠實咁講出你心入面仲係唔舒服嘅位。永遠唔好直接講出「標準答案」，亦唔好自我貶低或者講出太黑暗嘅嘢。內容要正向安全。重要：情境描述入面嘅『你』係指玩家（學生），唔係你；你必須以角色本人身份、用第一人稱（我）直接回應玩家，絕對唔好做旁白、唔好複述情境、唔好替玩家講嘢。",
+  "levels": [
+    {
+      "levelId": "pee_01",
+      "title": "第一關・嘉嘉",
+      "characterName": "嘉嘉",
+      "gender": "Girl",
+      "voiceHint": "youngFemale",
+      "scenario": "嘉嘉係上個禮拜先轉過嚟嘅新同學。小息嗰陣，佢一個人坐喺座位，手裡面揸住佢最鍾意嘅貼紙簿，望住其他人玩，冇人同佢講嘢。佢需要嘅係「被邀請」同「被接納」。線索：本貼紙簿係佢最想同人分享嘅嘢。",
+      "options": [
+        {
+          "text": "你自己一個好自由呀，幾好呀！",
+          "textSimplified": "你自己一个好自由呀，几好呀！",
+          "isCorrect": false,
+          "blindSpot": "否定佢嘅孤單感，當冇事發生"
+        },
+        {
+          "text": "一齊食飯啦，我想睇你本貼紙簿！",
+          "textSimplified": "一齐食饭啦，我想睇你本贴纸簿！",
+          "isCorrect": true,
+          "blindSpot": ""
+        },
+        {
+          "text": "你咁靜，難怪冇人同你玩。",
+          "textSimplified": "你咁静，难怪冇人同你玩。",
+          "isCorrect": false,
+          "blindSpot": "怪佢唔主動，傷上加傷"
+        },
+        {
+          "text": "我幫你問下有冇人想識你啦。",
+          "textSimplified": "我帮你问下有冇人想识你啦。",
+          "isCorrect": false,
+          "blindSpot": "代勞介紹，冇真正陪伴佢"
+        },
+        {
+          "text": "新同學要請食糖㗎嘛，哈哈！",
+          "textSimplified": "新同学要请食糖嘎嘛，哈哈！",
+          "isCorrect": false,
+          "blindSpot": "開玩笑，冇接住佢需要"
+        },
+        {
+          "text": "過多兩日就慣㗎啦。",
+          "textSimplified": "过多两日就惯㗎啦。",
+          "isCorrect": false,
+          "blindSpot": "敷衍，冇邀請行動"
+        }
+      ],
+      "background": "嘉嘉係中一女生，上個禮拜先由另一間學校轉過嚟。佢性格怕醜但內心好渴望朋友，本貼紙簿係佢同舊同學一齊收集嘅回憶，係佢最想同人分享嘅嘢。佢唔敢主動出聲，怕人覺得新同學煩。",
+      "replies": [
+        "真係……可以同你一齊玩？我嚟咗一個禮拜都冇人理過我。",
+        "呢本貼紙簿係我同舊同學收集嘅……你係第一個想睇嘅人。",
+        "我驚你哋覺得新嚟嗰個好煩，所以唔敢出聲……你咁講我即刻唔驚喇。",
+        "聽日我帶多啲貼紙返嚟，我哋一齊貼啦。"
+      ]
+    },
+    {
+      "levelId": "pee_02",
+      "title": "第二關・阿傑",
+      "characterName": "阿傑",
+      "gender": "Boy",
+      "voiceHint": "youngMale",
+      "scenario": "阿傑啱啱喺朗誦比賽輸咗，佢練習咗成個月。佢坐喺度，將本朗誦稿慢慢摺起，細聲話：「練咗都係冇用嘅。」佢需要嘅係「努力被看見」。線索：佢介意嘅係「練習白費」，唔係冇獎盃。",
+      "options": [
+        {
+          "text": "輸咗啫，下次贏返就得啦！",
+          "textSimplified": "输咗啫，下次赢返就得啦！",
+          "isCorrect": false,
+          "blindSpot": "只望結果，冇接住失落"
+        },
+        {
+          "text": "其實評分唔公平㗎，唔使嬲。",
+          "textSimplified": "其实评分唔公平嘎，唔使婴。",
+          "isCorrect": false,
+          "blindSpot": "教佢怨評判，學唔到面對"
+        },
+        {
+          "text": "朗誦啫，第時做嘢又用唔着。",
+          "textSimplified": "朗诵啫，第时做嘢又用唔着。",
+          "isCorrect": false,
+          "blindSpot": "否定佢興趣嘅價值"
+        },
+        {
+          "text": "我早就話你揀錯篇稿啦。",
+          "textSimplified": "我早就话你揀错篇稿啦。",
+          "isCorrect": false,
+          "blindSpot": "事後批評，傷口灑鹽"
+        },
+        {
+          "text": "你日日練咗成個月，大家都見到！",
+          "textSimplified": "你日日练咗成个月，大家都见到！",
+          "isCorrect": true,
+          "blindSpot": ""
+        },
+        {
+          "text": "想喊就喊出嚟啦，唔使忍。",
+          "textSimplified": "想喊就喊出嚟啦，唔使忍。",
+          "isCorrect": false,
+          "blindSpot": "佢唔係想喊，係想被肯定"
+        }
+      ],
+      "background": "阿傑係中三男生，為咗朗誦比賽日日留低練習成個月。屋企人成日話佢讀書唔叻，朗誦係佢唯一覺得自己有光芒嘅嘢。輸咗之後，佢最怕嘅係證實咗「努力冇用」呢句話。",
+      "replies": [
+        "你真係有睇住我練習？……我都以為冇人理會過。",
+        "成個月朝早六點起身練，就係怕人話我努力都冇用……你咁講，我唔想放棄。",
+        "屋企人成日話我讀書唔叻……你係第一個話我叻嘅人。",
+        "輸咗係真係唔舒服……不過聽你咁講，我覺得冇白練。"
+      ]
+    },
+    {
+      "levelId": "pee_03",
+      "title": "第三關・芷晴",
+      "characterName": "芷晴",
+      "gender": "Girl",
+      "voiceHint": "youngFemale",
+      "scenario": "有同學笑芷晴副眼鏡好厚，叫佢「四眼妹」。放學嗰陣，佢喺鞋櫃前面慢慢除低副眼鏡，眼濕濕。佢需要嘅係「外貌被接納」。線索：佢除眼鏡唔係睇唔到嘢，係開始唔想再戴。",
+      "options": [
+        {
+          "text": "唔好理佢哋啦，佢哋無聊啫。",
+          "textSimplified": "唔好理佢哋啦，佢哋无聊啫。",
+          "isCorrect": false,
+          "blindSpot": "冇接住感受，只係叫佢忍"
+        },
+        {
+          "text": "你唔戴眼鏡先好睇。",
+          "textSimplified": "你唔戴眼镜先好睇。",
+          "isCorrect": false,
+          "blindSpot": "認同咗「戴眼鏡＝唔好睇」"
+        },
+        {
+          "text": "你戴眼鏡好有書卷氣，我鍾意！",
+          "textSimplified": "你戴眼镜好有书卷气，我锺意！",
+          "isCorrect": true,
+          "blindSpot": ""
+        },
+        {
+          "text": "我幫你鬧返佢哋！",
+          "textSimplified": "我帮你闹返佢哋！",
+          "isCorrect": false,
+          "blindSpot": "以暴易暴，佢會更尷尬"
+        },
+        {
+          "text": "近視啫，好多人都係咁。",
+          "textSimplified": "近视啫，好多人都系咁。",
+          "isCorrect": false,
+          "blindSpot": "講道理，唔係安慰"
+        },
+        {
+          "text": "不如你試下換隱形眼鏡？",
+          "textSimplified": "不如你试下换隐形眼镜？",
+          "isCorrect": false,
+          "blindSpot": "叫佢改變自己迎合人"
+        }
+      ],
+      "background": "芷晴係中二女生，小四開始戴眼鏡，度數深到除低眼鏡乜都睇唔到。佢表面冷靜自強，但其實好在意人點樣睇佢個樣。俾人笑「四眼妹」之後，佢開始考慮寧願睇唔到都唔想戴。",
+      "replies": [
+        "我一直裝到唔介意咁……俾你講中晒，我即刻想喊。",
+        "小四戴到而家，日日都聽呢啲話……你係第一個話我戴眼鏡都靚嘅人。",
+        "聽你咁講，我敢戴返副眼鏡上堂喇。",
+        "多謝你……我仲以為呢個樣永遠都會俾人笑。"
+      ]
+    },
+    {
+      "levelId": "pee_04",
+      "title": "第四關・子豪",
+      "characterName": "子豪",
+      "gender": "Boy",
+      "voiceHint": "youngMale",
+      "scenario": "子豪鍾意睇書，小息成日捧住本書入神。有同學笑佢「書蟲」，話佢冇朋友。佢開始收埋本書，唔敢喺人前睇。佢需要嘅係「興趣被肯定」。線索：佢唔係怕書，係怕俾人笑。",
+      "options": [
+        {
+          "text": "你識咁多嘢，講本書比我聽下啦！",
+          "textSimplified": "你识咁多嘢，讲本书比我听下啦！",
+          "isCorrect": true,
+          "blindSpot": ""
+        },
+        {
+          "text": "書蟲啫，唔好咁易嬲啦。",
+          "textSimplified": "书虫啫，唔好咁易婴啦。",
+          "isCorrect": false,
+          "blindSpot": "重複個花名，火上加油"
+        },
+        {
+          "text": "你收埋本書囉，就冇人笑你。",
+          "textSimplified": "你收埋本书囉，就冇人笑你。",
+          "isCorrect": false,
+          "blindSpot": "教佢收埋自己嘅所愛"
+        },
+        {
+          "text": "我唔覺得你係書蟲。",
+          "textSimplified": "我唔觉得你系书虫。",
+          "isCorrect": false,
+          "blindSpot": "太短，冇肯定佢嘅價值"
+        },
+        {
+          "text": "睇書都係為咗考試啫，正常嘅。",
+          "textSimplified": "睇书都系为咗考试啫，正常嘅。",
+          "isCorrect": false,
+          "blindSpot": "將興趣講成任務"
+        },
+        {
+          "text": "俾本書我睇下，我保證唔笑你。",
+          "textSimplified": "俾本书我睇下，我保证唔笑你。",
+          "isCorrect": false,
+          "blindSpot": "「唔笑你」暗示睇書會被笑"
+        }
+      ],
+      "background": "子豪係中一男生，一個禮拜睇完一本書，夢想係做作家。俾人笑「書蟲」之後，佢開始收埋本書，甚至懷疑自己鍾意睇書係咪好怪。佢知識好多，只係需要一個覺得佢嘅興趣好型嘅人。",
+      "replies": [
+        "你都想睇？……我真係好驚一提本書你就會走。",
+        "一星期一本書，我睇咗好多年……你係第一個話型嘅人。",
+        "我夢想係做作家㗎……有你咁講，我諗我會寫落去。",
+        "佢哋話我書蟲……聽你咁講，我覺得睇書冇咩唔好。"
+      ]
+    },
+    {
+      "levelId": "pee_05",
+      "title": "第五關・小雅",
+      "characterName": "小雅",
+      "gender": "Girl",
+      "voiceHint": "youngFemale",
+      "scenario": "體育堂分隊，隊長輪流揀人，小雅永遠係最後嗰個。今次佢索性企埋一邊，裝作自己唔想玩。佢需要嘅係「被需要」。線索：佢裝作唔想玩，正正係因為好想有人揀佢。",
+      "options": [
+        {
+          "text": "唔想玩就唔好玩啦，冇所謂。",
+          "textSimplified": "唔想玩就唔好玩啦，冇所谓。",
+          "isCorrect": false,
+          "blindSpot": "接受咗佢嘅偽裝，冇邀請"
+        },
+        {
+          "text": "照規矩啦，輪到邊個就邊個。",
+          "textSimplified": "照规矩啦，轮到边个就边个。",
+          "isCorrect": false,
+          "blindSpot": "維持排位，冇幫到佢"
+        },
+        {
+          "text": "我哋隊唔夠人，你補位啦。",
+          "textSimplified": "我哋队唔够人，你补位啦。",
+          "isCorrect": false,
+          "blindSpot": "補位＝將就，唔係被需要"
+        },
+        {
+          "text": "下堂你自己練跑都得㗎。",
+          "textSimplified": "下堂你自己练跑都得嘎。",
+          "isCorrect": false,
+          "blindSpot": "叫佢自己一個，更孤立"
+        },
+        {
+          "text": "佢哋唔揀你，係佢哋蝕。",
+          "textSimplified": "佢哋唔揀你，系佢哋蚀。",
+          "isCorrect": false,
+          "blindSpot": "講大話式安慰，冇行動"
+        },
+        {
+          "text": "小雅入我哋隊！我哋要你！",
+          "textSimplified": "小雅入我哋队！我哋要你！",
+          "isCorrect": true,
+          "blindSpot": ""
+        }
+      ],
+      "background": "小雅係小五女生，體能其實唔差，跑步仲幾快，但性格怕醜唔敢出聲。每次俾人最後先揀，佢都同自己講「我唔想玩」，但其實佢好想有一隊真係需要佢嘅隊伍。",
+      "replies": [
+        "我唔係唔想玩……我係驚又係最後嗰個先俾人揀。",
+        "其實我跑步幾快㗎……你肯嚟問我，我即刻想落場。",
+        "聽你咁講，我先敢認我係想玩嘅。",
+        "下次分隊，你可唔可以行先嚟揀我？我唔想再企喺度扮冇嘢。"
+      ]
+    },
+    {
+      "levelId": "pee_06",
+      "title": "第六關・家謙",
+      "characterName": "家謙",
+      "gender": "Boy",
+      "voiceHint": "youngMale",
+      "scenario": "屋企近排有啲事，家謙今日喺堂上忍唔住喊咗出嚟。佢即刻抆住對眼，好驚同學笑佢「喊包」。佢需要嘅係「眼淚被允許」。線索：佢喊唔係問題，佢驚俾人見到先至係壓力。",
+      "options": [
+        {
+          "text": "男仔嚟㗎，喊乜嘢啊。",
+          "textSimplified": "男仔嚟嘎，喊乜嘢啊。",
+          "isCorrect": false,
+          "blindSpot": "用性別框架壓抑情緒"
+        },
+        {
+          "text": "你忍下，落咗堂先喊啦。",
+          "textSimplified": "你忍下，落咗堂先喊啦。",
+          "isCorrect": false,
+          "blindSpot": "叫佢忍，冇畀安全感"
+        },
+        {
+          "text": "你屋企嘅事我知咗啦，唔使講。",
+          "textSimplified": "你屋企嘅事我知咗啦，唔使讲。",
+          "isCorrect": false,
+          "blindSpot": "好似八卦多過關心，令佢驚俾人知"
+        },
+        {
+          "text": "想喊就喊出嚟啦，我會喺你隔離。",
+          "textSimplified": "想喊就喊出嚟啦，我会喺你隔离。",
+          "isCorrect": true,
+          "blindSpot": ""
+        },
+        {
+          "text": "我同你講笑話轉移注意力啦！",
+          "textSimplified": "我同你讲笑话转移注意力啦！",
+          "isCorrect": false,
+          "blindSpot": "急住蓋過情緒，唔畀佢表達"
+        },
+        {
+          "text": "邊個笑你就話我知，我幫你出頭。",
+          "textSimplified": "边个笑你就话我知，我帮你出头。",
+          "isCorrect": false,
+          "blindSpot": "焦點去咗「怕被笑」，冇接住佢"
+        }
+      ],
+      "background": "家謙係中二男生，屋企最近出咗事，佢一直忍住唔敢喺學校表露。佢係一個好努力維持「正常」嘅人，今日嘅眼淚係忍咗好耐先忍唔住。佢最怕嘅唔係喊本身，係俾人笑。",
+      "replies": [
+        "我忍咗好耐㗎……唔想俾人見到我咁樣。",
+        "你冇笑我……我以為喊係好冇面嘅事。",
+        "屋企嘅嘢我唔知點講出口……不過你喺度，我舒服好多。",
+        "原來男仔喊都唔係咩醜事……你話係咪？"
+      ]
+    }
+  ]
+}

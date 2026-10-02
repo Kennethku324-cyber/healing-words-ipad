@@ -1,0 +1,20 @@
+{
+  "configVersion": 5,
+  "dialogueEnabled": true,
+  "llmMode": "off",
+  "ollamaUrl": "http://127.0.0.1:11434",
+  "ollamaModel": "qwen2.5:7b-instruct",
+  "glmUrl": "https://open.bigmodel.cn/api/paas/v4/chat/completions",
+  "glmModel": "glm-4-flash",
+  "glmApiKey": "",
+  "numCtx": 2048,
+  "maxTokens": 256,
+  "temperature": 0.6,
+  "requestTimeoutSeconds": 30,
+  "ttsMode": "off",
+  "ttsSpeed": 1.0,
+  "replyStyle": "cantonese",
+  "pitchYoungMale": 0.92,
+  "pitchYoungFemale": 1.12,
+  "pitchElder": 0.8
+}

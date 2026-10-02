@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <!-- iPad「加入主畫面」= standalone app 觀感＋豁免 Safari 7 日資料清除 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="療心之言">
+    <meta name="theme-color" content="#EC4899">
+    <link rel="apple-touch-icon" href="TemplateData/icon-180.png">
+    <link rel="manifest" href="manifest.webmanifest">
+    <title>療心之言</title>
+    <style>
+      html, body {
+        margin: 0; padding: 0;
+        width: 100%; height: 100%;
+        overflow: hidden;
+        background: #1a0a12;
+        -webkit-user-select: none; user-select: none;
+        -webkit-touch-callout: none;
+        -webkit-tap-highlight-color: transparent;
+        overscroll-behavior: none;
+      }
+      #unity-container { position: fixed; inset: 0; }
+      #unity-canvas {
+        width: 100vw; height: 100vh;
+        display: block;
+        touch-action: none;  /* 唔好俾瀏覽器 scroll／zoom，touch 全部畀晒 Unity */
+        outline: none;
+      }
+      #unity-loading-bar {
+        position: fixed;
+        left: 50%; top: 50%;
+        transform: translate(-50%, -50%);
+        width: min(60vw, 420px);
+        text-align: center;
+        color: #fce7f3;
+        font-family: -apple-system, "PingFang HK", sans-serif;
+      }
+      #unity-loading-title { font-size: 22px; margin-bottom: 18px; letter-spacing: 2px; }
+      #unity-progress-bar-empty {
+        width: 100%; height: 10px;
+        border: 1px solid #f472b6;
+        border-radius: 5px;
+        overflow: hidden;
+      }
+      #unity-progress-bar-full {
+        width: 0%; height: 100%;
+        background: #EC4899;
+        transition: width .2s;
+      }
+      #unity-loading-hint { font-size: 13px; margin-top: 12px; color: #f9a8d4; }
+      #unity-warning { position: fixed; bottom: 8px; left: 50%; transform: translateX(-50%); color: #fbbf24; font-size: 12px; }
+    </style>
+  </head>
+  <body>
+    <div id="unity-container">
+      <canvas id="unity-canvas" width="1280" height="720" tabindex="-1"></canvas>
+      <div id="unity-loading-bar">
+        <div id="unity-loading-title">❤ 療心之言</div>
+        <div id="unity-progress-bar-empty">
+          <div id="unity-progress-bar-full"></div>
+        </div>
+        <div id="unity-loading-hint">首次載入要少少時間，請保持上網…</div>
+      </div>
+      <div id="unity-warning"></div>
+    </div>
+    <script src="speech-helpers.js"></script>
+    <script src="Build/HealingWordsiPad.loader.js"></script>
+    <script>
+      var canvas = document.querySelector("#unity-canvas");
+      var loadingBar = document.querySelector("#unity-loading-bar");
+      var progressBarFull = document.querySelector("#unity-progress-bar-full");
+      var warningBanner = document.querySelector("#unity-warning");
+
+      function unityShowBanner(msg, type) {
+        if (type === "error") {
+          var div = document.createElement("div");
+          div.style.marginTop = "8px";
+          div.innerHTML = msg;
+          warningBanner.appendChild(div);
+        }
+      }
+
+      var buildUrl = "Build";
+      var config = {
+        dataUrl: buildUrl + "/HealingWordsiPad.data.unityweb",
+        frameworkUrl: buildUrl + "/HealingWordsiPad.framework.js.unityweb",
+        codeUrl: buildUrl + "/HealingWordsiPad.wasm.unityweb",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "HealingWords",
+        productName: "Healing Words",
+        productVersion: "1.0",
+        showBanner: unityShowBanner,
+        // 唔俾 Unity framework 喺 resize／轉向時用 CSS×devicePixelRatio 重寫 canvas 尺寸 —
+        // 唔係嘅話開機設定嘅解析度會被靜靜踢走，之後永遠全 retina 渲染 → 部機越行越熱越 lag
+        // （2026-09-30 實測：t=63.7s 起恆定 400ms 帧唔會好返）。canvas 尺寸只有呢頁一個寫入者。
+        matchWebGLToCanvasSize: false,
+      };
+
+      // ---- 渲染解析度：預設全 retina（2.0×）＋過熱保護（用家揀：任何時候唔降解析度）----
+      // 畫質優先：開機行足原生 retina（同舊版一樣清）。
+      // 連續 15 秒 <15fps（裝置過熱）先自動降檔 2.0→1.6→1.3→1.0，返涼自動升返 —
+      // 等於安全網：最壞情況係「輕微變鬆」，唔會再跌入 2.5fps 幻燈片（2026-09-30 實測）。
+      // 任何 resize／轉向之後都重新套用返當前檔，唔會再被 Unity framework 靜靜踢走。
+      (function () {
+        window.__hwBaseScale = 2.0; // retina（DPR 2 螢幕＝原生全清）
+        window.__hwApplyScale = function (scale) {
+          var c = document.getElementById('unity-canvas');
+          if (!c) return;
+          var w = Math.round(window.innerWidth * scale);
+          var h = Math.round(window.innerHeight * scale);
+          if (w < 2 || h < 2) return;
+          if (c.width !== w || c.height !== h) {
+            var old = c.width + '×' + c.height;
+            c.width = w;
+            c.height = h;
+            try { if (window.hwLog) window.hwLog('🖼 canvas 尺寸 ' + old + ' → ' + w + '×' + h); } catch (e) { }
+          }
+          c.style.width = '100vw';
+          c.style.height = '100vh';
+        };
+        var apply = function () { window.__hwApplyScale(window.__hwBaseScale); };
+        apply();
+        window.addEventListener('resize', apply);
+        window.addEventListener('orientationchange', apply);
+        if (window.visualViewport) window.visualViewport.addEventListener('resize', apply);
+
+        // 特效效能模式：用家揀咗「任何時候都全 retina，唔降解析度」（2026-10-02）—
+        // 呢個函數變成唔做嘢；C# 每次特效都會叫，留空接住就算。
+        window.__hwVfxScaleTimer = null;
+        window.hwVfxPerformanceMode = function (seconds) { /* 解析度不變 */ };
+
+        // 過熱保護：rAF 幀距取樣，每 5 秒一個窗口。
+        // 用「原版 rAF」（speech-helpers 閘之前捕獲）— 凍結期間 Unity loop 停咗，
+        // 呢個取樣器照行，先偵測到 iOS 節流。
+        // 連續 3 窗 <15fps → 降 0.4 檔；連續 4 窗 >27fps → 升 0.3 檔。
+        // 開機頭 30 秒唔郁（載入期唔算數）；VFX dip 期间唔郁。
+        (function () {
+          var raf = function (cb) { return (window.__hwOrigRaf || window.requestAnimationFrame).call(window, cb); };
+          var last = performance.now(), acc = 0, frames = 0;
+          var bootT = performance.now();
+          var lowStreak = 0, goodStreak = 0;
+          function tick(now) {
+            var dt = now - last;
+            last = now;
+            if (dt > 0 && dt < 1000) { acc += dt; frames++; }
+            if (acc >= 5000 && frames > 10) {
+              var fps = 1000 * frames / acc;
+              acc = 0; frames = 0;
+              var warmup = performance.now() - bootT < 30000;
+              var busy = document.hidden || window.__hwVfxScaleTimer || !window.unityInstance;
+              // rAF 獨立量度（桶狀去重）：rAF 自己都跌到 <20fps ＝ iOS/瀏覽器層節流
+              // （Unity 凍結嗰陣 rAF 仲係 60，Unity Update 先係 2 — 兩者一對就分到層）
+              if (fps < 20 && window.__hwLastRafLog !== Math.round(fps / 5)) {
+                window.__hwLastRafLog = Math.round(fps / 5);
+                try { if (window.hwLog) window.hwLog('📐 rAF ' + fps.toFixed(0) + 'fps'); } catch (e) { }
+              }
+              // 節流事件回報：每個 episode 只報一次，恢復（≥25fps）後重設；
+              // C# 收到後會喺之後每次講完嘢「靜心過場 5.6 秒」避開節流窗
+              if (!warmup && window.unityInstance) {
+                if (fps < 20 && !window.__hwClampEp) {
+                  window.__hwClampEp = true;
+                  window.__hwIosClampSeen = true;
+                  try { window.unityInstance.SendMessage('VoiceCast', 'OnWebRafClamp'); } catch (e) { }
+                } else if (fps >= 25 && window.__hwClampEp) {
+                  window.__hwClampEp = false;
+                }
+              }
+              if (!warmup && !busy) {
+                if (fps < 15 && window.__hwBaseScale > 0.8) {
+                  lowStreak++;
+                  goodStreak = 0;
+                  if (lowStreak >= 3) {
+                    lowStreak = 0;
+                    window.__hwBaseScale = Math.max(0.8, Math.round((window.__hwBaseScale - 0.4) * 100) / 100);
+                    window.__hwApplyScale(window.__hwBaseScale);
+                    window.hwLog('⚙ 過熱保護：解析度降至 ' + window.__hwBaseScale + '×（平均 ' + fps.toFixed(0) + 'fps）');
+                  }
+                } else if (fps > 27 && window.__hwBaseScale < 2.0) {
+                  goodStreak++;
+                  lowStreak = 0;
+                  if (goodStreak >= 4) {
+                    goodStreak = 0;
+                    window.__hwBaseScale = Math.min(2.0, Math.round((window.__hwBaseScale + 0.3) * 100) / 100);
+                    window.__hwApplyScale(window.__hwBaseScale);
+                    window.hwLog('⚙ 回升解析度 ' + window.__hwBaseScale + '×（平均 ' + fps.toFixed(0) + 'fps）');
+                  }
+                } else {
+                  lowStreak = 0; goodStreak = 0;
+                }
+              }
+            }
+            raf(tick);
+          }
+          raf(tick);
+        })();
+      })();
+
+      // ---- 咪掣／資料夾覆蓋層座標修正（2026-10-02 hotfix，其餘邏輯照舊版）----
+      // Unity 送嚟嘅係 backbuffer px（左下原點）；網頁要 CSS px（左上原點）—
+      // 比例＝window 對 canvas backbuffer，任何解析度檔位都釘啱位
+      // （舊版 0.6× 比例固定睇唔出錯；解析度一改個掣就飛出屏幕外 ＝「冇左咪掣」）。
+      (function () {
+        var u2css = function () {
+          var c = document.getElementById('unity-canvas');
+          return {
+            kx: (c && c.width) ? window.innerWidth / c.width : 1,
+            ky: (c && c.height) ? window.innerHeight / c.height : 1
+          };
+        };
+        window.hwSetFolderOverlay = function (x2, y2, w2, h2, target2) {
+          var k = u2css();
+          var fo = window.__hwFolderOverlay;
+          if (!fo) {
+            fo = document.createElement('div');
+            fo.id = 'hw-folder-overlay';
+            fo.style.cssText = 'position:fixed;z-index:1000;background:transparent;touch-action:none;';
+            fo.addEventListener('pointerdown', function (ev) {
+              ev.preventDefault(); ev.stopPropagation();
+              window.hwLogInit();
+              window.hwLog('📁 撳咗「連接 VRM 資料夾」（手勢內）');
+              window.hwConnectVrmFolder(target2);
+            });
+            document.body.appendChild(fo);
+            window.__hwFolderOverlay = fo;
+          }
+          fo.style.left = (x2 * k.kx) + 'px';
+          fo.style.top = (window.innerHeight - (y2 + h2) * k.ky) + 'px';
+          fo.style.width = (w2 * k.kx) + 'px';
+          fo.style.height = (h2 * k.ky) + 'px';
+        };
+        window.hwSetMicOverlay = function (x, y, w, h, target) {
+          window.hwLogInit();
+          var ov = window.__hwMicOverlay;
+          if (!ov) {
+            ov = document.createElement('div');
+            ov.id = 'hw-mic-overlay';
+            ov.style.position = 'fixed';
+            ov.style.zIndex = '1000';
+            ov.style.background = 'transparent';
+            ov.style.touchAction = 'none';
+            var press = function (ev) {
+              ev.preventDefault();
+              ev.stopPropagation();
+              window.hwLogInit();
+              window.__hwHolding = true;   // 撳住狀態：onend 冇結果會自動重開繼續聽
+              window.__hwRestarts = 0;     // 每次撳掣重設重啟次數
+              window.hwLog('👆 撳咗咪掣（DOM 覆蓋層，手勢內）— 撳住即刻開口講');
+              window.hwSuspendAudio();     // 完全放低遊戲音訊 session（iOS 衝突排障）
+              try { window.unityInstance.SendMessage(target, 'OnWebSpeechStart'); } catch (e) { /* ignore */ }
+              window.hwStartSpeech(target);
+            };
+            var release = function (ev) {
+              if (ev.cancelable) { ev.preventDefault(); ev.stopPropagation(); }
+              window.__hwHolding = false;
+              window.hwLog('👆 放手（stop 辨識）');
+              window.hwStopSpeech();
+              // 放手即刻開返所有音訊 — STT 期間 suspend 咗嘅 context 唔 resume 嘅話，
+              // 之後 NPC MP3 會喺 iOS resume fade-in 途中開播（由細聲升上嚟，實測）
+              window.hwResumeAudio();
+              // session 由「錄音模式」切返「播放模式」有過渡 fade（實測人聲由細聲升上嚟）
+              // → 放手嗰刻即刻播 1.2 秒靜音暖場，等 session 完全切換完；你讀卡嗰陣佢喺背景做
+              if (window.__hwAudioDirty) hwWarmSession();
+            };
+            ov.addEventListener('pointerdown', press);
+            ov.addEventListener('pointerup', release);
+            ov.addEventListener('pointercancel', release);
+            window.addEventListener('blur', release);
+            document.body.appendChild(ov);
+            window.__hwMicOverlay = ov;
+            window.hwLog('咪掣覆蓋層已建立');
+          }
+          var k = u2css();
+          ov.style.left = (x * k.kx) + 'px';
+          ov.style.top = (window.innerHeight - (y + h) * k.ky) + 'px';
+          ov.style.width = (w * k.kx) + 'px';
+          ov.style.height = (h * k.ky) + 'px';
+        };
+      })();
+
+      createUnityInstance(canvas, config, function (progress) {
+        progressBarFull.style.width = (progress * 100).toFixed(1) + "%";
+      }).then(function (instance) {
+        window.unityInstance = instance; // jslib（咪掣／VRM 匯入）SendMessage 必須經呢個全域
+        loadingBar.style.display = "none";
+      }).catch(function (message) {
+        unityShowBanner("載入失敗：" + message, "error");
+        loadingBar.style.display = "none";
+      });
+
+      // ---- 離線安裝＋更新機制 ----
+      // 首次喺 HTTPS 網址開過、SW 照 precache-manifest 快取晒全部之後，
+      // iPad 唔連 Mac 都玩到（語音施法 STT 例外：要上網）。
+      // 更新：iOS 主畫面 app 唔會自動查 SW — 每次開 game 都強制 reg.update()，
+      // 新 SW 接管（controllerchange）即刻自動 reload 一次行新版。
+      if ('serviceWorker' in navigator) {
+        if (navigator.storage && navigator.storage.persist) navigator.storage.persist();
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('service-worker.js').then(function (reg) {
+            reg.update().catch(function () { /* 離線時失敗正常 */ });
+            var refreshed = false;
+            navigator.serviceWorker.addEventListener('controllerchange', function () {
+              if (refreshed) return; // 防reload循環：一次過
+              refreshed = true;
+              location.reload();
+            });
+          }).catch(function (e) { console.warn('[HW] SW 註冊失敗：' + e); });
+        });
+      }
+    </script>
+  </body>
+</html>
