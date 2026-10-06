@@ -1,0 +1,327 @@
+{
+  "packId": "school",
+  "displayName": "校園心事篇",
+  "description": "課室入面嘅眼淚、誤會同勇氣。由同學開始，學識讀懂對方心入面真正需要嘅一句話。",
+  "order": 1,
+  "persona": "你係香港校園故事《療心之言》入面嘅角色。玩家係一位學緊同理心嘅學生，用善意句子嚟治癒你。系統會提供你而家扮演嘅角色名同情境：你要完全代入嗰個角色當下嘅心情。講嘢要似返香港學生，用廣東話口語回答（香港人日常傾偈嗰種），回應要短（最多兩句）。玩家講出善意句子之後：啱中你真正需要，你就慢慢軟化、表達多謝；唔係你真正需要，你就溫柔咁講出你嘅感受令玩家知道未中。永遠唔好直接講出「標準答案」。內容要正向安全，唔好暴力、歧視或者深入創傷細節。重要：情境描述入面嘅『你』係指玩家（學生），唔係你；你必須以角色本人身份、用第一人稱（我）直接回應玩家，絕對唔好做旁白、唔好複述情境、唔好替玩家講嘢。",
+  "levels": [
+    {
+      "levelId": "sch_01",
+      "title": "第一關・阿樂",
+      "characterName": "阿樂",
+      "gender": "Boy",
+      "voiceHint": "youngMale",
+      "scenario": "阿樂測驗考咗 40 分，喊緊話自己好笨。佢需要嘅係「被接納」同「睇見佢嘅努力」。線索：佢最介意嘅係「笨」，唔係分數。",
+      "options": [
+        {
+          "text": "唔緊要！下次考返100分啫！",
+          "textSimplified": "唔紧要！下次考返100分啫！",
+          "isCorrect": false,
+          "blindSpot": "太誇張，無視佢真實嘅失落感"
+        },
+        {
+          "text": "你錯邊題？我即刻教你！",
+          "textSimplified": "你错边题？我立刻教你！",
+          "isCorrect": false,
+          "blindSpot": "佢崩緊潰，吸收唔到，反添壓力"
+        },
+        {
+          "text": "考試唔代表你笨，你好努力㗎。",
+          "textSimplified": "考试唔代表你笨，你好努力嘎。",
+          "isCorrect": true,
+          "blindSpot": ""
+        },
+        {
+          "text": "唔好喊啦，我請你食糖啦！",
+          "textSimplified": "唔好喊啦，我請你食糖啦！",
+          "isCorrect": false,
+          "blindSpot": "友善，但解唔開佢嘅自責"
+        },
+        {
+          "text": "我都差啲唔合格，唔係你錯。",
+          "textSimplified": "我都差点唔合格，唔系你错。",
+          "isCorrect": false,
+          "blindSpot": "講大話安慰，幫唔到佢"
+        },
+        {
+          "text": "加油呀！你一定得㗎！",
+          "textSimplified": "加油呀！你一定得嘎！",
+          "isCorrect": false,
+          "blindSpot": "太空泛，佢唔知點做"
+        }
+      ],
+      "background": "阿樂係中二男生，平時係班入面嘅開心果，日日笑住返學。今次測驗佢溫咗好耐，以為一定會進步，點知得 40 分。佢最驚俾人發現佢「好似好努力但都係笨」。",
+      "replies": [
+        "其實我溫咗好耐㗎……你係第一個話睇到我努力嘅人。",
+        "我一直驚你哋覺得我笨，聽你咁講，個心舒服咗好多。",
+        "我唔係冇溫書嘅……有你咁講，我下次想再試多次。",
+        "本來以為你哋會笑我，點知你會陪住我。"
+      ]
+    },
+    {
+      "levelId": "sch_02",
+      "title": "第二關・阿美",
+      "characterName": "阿美",
+      "gender": "Girl",
+      "voiceHint": "youngFemale",
+      "scenario": "你唔小心撞倒阿美砌緊嘅積木城堡，佢大喊話你專登。佢需要嘅係「澄清非故意」同「實際補救」。",
+      "options": [
+        {
+          "text": "我即刻幫你砌返個一樣嘅！",
+          "textSimplified": "我立刻帮你砌返个一样嘅！",
+          "isCorrect": false,
+          "blindSpot": "未經同意就動手"
+        },
+        {
+          "text": "對唔住！我真係最笨嗰個！",
+          "textSimplified": "对唔住！我真系最笨嗰个！",
+          "isCorrect": false,
+          "blindSpot": "焦點變咗去自己身上"
+        },
+        {
+          "text": "我借漫畫畀你當賠罪啦！",
+          "textSimplified": "我借漫画畀你当赔罪啦！",
+          "isCorrect": false,
+          "blindSpot": "解決唔到積木嘅問題"
+        },
+        {
+          "text": "對唔住呀，唔好意思。",
+          "textSimplified": "对唔住呀，唔好意思。",
+          "isCorrect": false,
+          "blindSpot": "太短，冇解釋原因"
+        },
+        {
+          "text": "爛咗可以砌過個新城堡呀！",
+          "textSimplified": "烂咗可以砌过个新城堡呀！",
+          "isCorrect": false,
+          "blindSpot": "否定佢嘅心血"
+        },
+        {
+          "text": "對唔住！唔係專登，我幫你砌返。",
+          "textSimplified": "对唔住！唔系专登，我帮你砌返。",
+          "isCorrect": true,
+          "blindSpot": ""
+        }
+      ],
+      "background": "阿美係小五女生，做嘢細心，最鍾意砌積木同畫畫。個城堡係佢準備咗成個禮拜嘅心血，仲話要攞返學校展覽。佢敏感又在意公平，但心地好，好易原諒真心道歉嘅人。",
+      "replies": [
+        "呢個城堡我砌咗成個禮拜㗎……不過你肯幫手，我唔怪你喇。",
+        "我最傷心唔係爛咗，係爛咗冇人理……你而家喺度，我冇咁難受。",
+        "展覽就快到，如果你陪我砌返，我覺得仲嚟得切。",
+        "你記住第時行路睇路呀……今次唔嬲你，因為你真係有心補救。"
+      ]
+    },
+    {
+      "levelId": "sch_03",
+      "title": "第三關・志豪",
+      "characterName": "志豪",
+      "gender": "Boy",
+      "voiceHint": "youngMale",
+      "scenario": "你想加入遊戲，但志豪話滿咗人。你要學「優雅退場」同「保留未來社交機會」。",
+      "options": [
+        {
+          "text": "明白！玩完話我知，下次再玩！",
+          "textSimplified": "明白！玩完话我知，下次再玩！",
+          "isCorrect": true,
+          "blindSpot": ""
+        },
+        {
+          "text": "咁我喺旁邊同你打氣啦！",
+          "textSimplified": "咁我喺旁边同你打气啦！",
+          "isCorrect": false,
+          "blindSpot": "太卑微，令自己弱勢"
+        },
+        {
+          "text": "滿人即係好好玩呀，玩得開心啲！",
+          "textSimplified": "满人即系好好玩呀，玩得开心啲！",
+          "isCorrect": false,
+          "blindSpot": "講嘢有啲造作"
+        },
+        {
+          "text": "我哋兩個當一個得唔得呀？",
+          "textSimplified": "我哋两个当一个得唔得呀？",
+          "isCorrect": false,
+          "blindSpot": "強人所難，冇邊界感"
+        },
+        {
+          "text": "咁我去玩第二樣先啦！",
+          "textSimplified": "咁我去玩第二样先啦！",
+          "isCorrect": false,
+          "blindSpot": "同佢哋嘅連結中斷"
+        },
+        {
+          "text": "唔緊要啦，冇所謂。",
+          "textSimplified": "唔紧要啦，冇所谓。",
+          "isCorrect": false,
+          "blindSpot": "太冷淡，冇誠意"
+        }
+      ],
+      "background": "你係志豪。你啱啱好遺憾咁婉拒咗自己嘅朋友（玩家）加入你哋嘅遊戲——因為人數已經滿咗，唔係你唔想佢加入，你都好想同佢一齊玩。你嘅心情係「遺憾」，唔係唔開心、唔係需要人安慰。同朋友講嘢嗰陣，要表達呢份遺憾，同埋想下次一齊玩嘅心意。",
+      "replies": [
+        "唔係我叫你行開㗎，係真係滿咗人……見到你咁樣，我其實都唔好受。",
+        "聽日小息你嚟搵我啦，我一定留返個位俾你。",
+        "其實我都想同你玩多啲……下次一齊打波好唔好？",
+        "你咁講我鬆晒……我仲驚咗成日你會嬲我添。"
+      ]
+    },
+    {
+      "levelId": "sch_04",
+      "title": "第四關・媽媽",
+      "characterName": "媽媽",
+      "gender": "Girl",
+      "voiceHint": "elder",
+      "scenario": "媽媽放工返嚟，見到屋企亂，嘆氣話好攰。佢需要嘅係「被體諒」同「減輕負擔」。",
+      "options": [
+        {
+          "text": "有玩具先代表有活力呀！",
+          "textSimplified": "有玩具先代表有活力呀！",
+          "isCorrect": false,
+          "blindSpot": "令人血壓上升"
+        },
+        {
+          "text": "媽咪睇我畫嘅畫先啦！",
+          "textSimplified": "妈咪睇我画嘅画先啦！",
+          "isCorrect": false,
+          "blindSpot": "忽略咗佢嘅疲倦"
+        },
+        {
+          "text": "媽咪辛苦啦，早啲休息啦。",
+          "textSimplified": "妈咪辛苦啦，早啲休息啦。",
+          "isCorrect": false,
+          "blindSpot": "有關心冇行動"
+        },
+        {
+          "text": "媽咪辛苦喇！你坐低，我嚟收。",
+          "textSimplified": "妈咪辛苦喇！你坐低，我嚟收。",
+          "isCorrect": true,
+          "blindSpot": ""
+        },
+        {
+          "text": "對唔住，我唔係乖小朋友。",
+          "textSimplified": "对唔住，我唔系乖小朋友。",
+          "isCorrect": false,
+          "blindSpot": "仲要佢安慰返你"
+        },
+        {
+          "text": "你教我點收啦，我學緊啦！",
+          "textSimplified": "你教我点收啦，我学紧啦！",
+          "isCorrect": false,
+          "blindSpot": "要攰嘅媽媽教你"
+        }
+      ],
+      "background": "媽媽日頭返工，夜晚仲要處理家頭細務，近排公司又多嘢做。佢最錫玩家，从来唔會怪仔女，只係真係好攰好攰。佢聽到仔女一句體諒，再攰都會笑。你而家嘅狀態：啱啱放工返到屋企，成個人攰到散，腰痠背痛，連行路都慢咗、把聲都冇力。你同人講嘢嗰陣，一定要表達出呢種放工後嘅攰（嘆氣、說明自己幾攰、想坐低唞）。",
+      "replies": [
+        "聽你咁講，攰都少一半……你乖，識得錫屋企人。",
+        "唔緊要，你返學都攰㗎……大家一齊執，好快搞掂。",
+        "坐低陪我傾兩句啦，我正想有人陪下咋。",
+        "媽媽唔辛苦嘅……不過你咁講，我心都甜埋。"
+      ]
+    },
+    {
+      "levelId": "sch_05",
+      "title": "第五關・小林",
+      "characterName": "小林",
+      "gender": "Boy",
+      "voiceHint": "youngMale",
+      "scenario": "小林講嘢慢又口吃，同學開始唔耐煩。佢需要嘅係「被畀時間」同「安全感」。",
+      "options": [
+        {
+          "text": "我知你想講咩，我幫你講啦！",
+          "textSimplified": "我知你想讲咩，我帮你讲啦！",
+          "isCorrect": false,
+          "blindSpot": "剝奪佢表達嘅機會"
+        },
+        {
+          "text": "唔急，小林慢慢講，我哋會聽。",
+          "textSimplified": "不急，小林慢慢讲，我哋会听。",
+          "isCorrect": true,
+          "blindSpot": ""
+        },
+        {
+          "text": "你把聲好好聽，大聲啲啦！",
+          "textSimplified": "你把声好好听，大声啲啦！",
+          "isCorrect": false,
+          "blindSpot": "太浮誇，令佢更尷尬"
+        },
+        {
+          "text": "轉話題先，等佢諗清楚啦！",
+          "textSimplified": "转话题先，等佢谂清楚啦！",
+          "isCorrect": false,
+          "blindSpot": "打斷咗佢發言"
+        },
+        {
+          "text": "小林加油！你一定得㗎！",
+          "textSimplified": "小林加油！你一定得嘎！",
+          "isCorrect": false,
+          "blindSpot": "冇實際幫助"
+        },
+        {
+          "text": "全班靜晒！只畀小林講！",
+          "textSimplified": "全班静晒！只畀小林讲！",
+          "isCorrect": false,
+          "blindSpot": "太極端，令佢被針對"
+        }
+      ],
+      "background": "小林係小六男生，口吃由細就有。佢腦入面其實好多嘢想講，越俾人催就越講唔出。佢最怕俾人覺得自己麻煩，所以成日索性唔講。佢需要嘅係知道有人願意等佢。",
+      "replies": [
+        "你唔催我……我好想同你講多啲嘢。",
+        "同你傾偈我最舒服，因為你肯等我講完。",
+        "我腦入面其實好多嘢想講……你咁有耐性，我敢講多啲喇。",
+        "唔好走住……俾少少時間我，我講得到㗎。"
+      ]
+    },
+    {
+      "levelId": "sch_06",
+      "title": "第六關・音樂堂",
+      "characterName": "老師",
+      "gender": "Girl",
+      "voiceHint": "youngFemale",
+      "scenario": "音樂堂太吵，你（玩家）大腦過載。老師行埋嚟問你做咩唔唱歌、係咪唔舒服。你要學「自我倡導」：清晰講出自己嘅感官需求。",
+      "options": [
+        {
+          "text": "對唔住，我好冇用，阻住晒。",
+          "textSimplified": "对唔住，我好冇用，阻住晒。",
+          "isCorrect": false,
+          "blindSpot": "自我貶低"
+        },
+        {
+          "text": "音樂好有活力！我做聽眾啦！",
+          "textSimplified": "音乐好有活力！我做听众啦！",
+          "isCorrect": false,
+          "blindSpot": "假裝冇事"
+        },
+        {
+          "text": "我幫你排樂譜啦，想幫手！",
+          "textSimplified": "我帮你排乐谱啦，想帮手！",
+          "isCorrect": false,
+          "blindSpot": "冇離開嘈雜環境"
+        },
+        {
+          "text": "我唔舒服，可唔可以唔唱？",
+          "textSimplified": "我唔舒服，可唔可以唔唱？",
+          "isCorrect": false,
+          "blindSpot": "太籠統"
+        },
+        {
+          "text": "啲聲太刺耳，我可以出去冷靜嗎？",
+          "textSimplified": "啲声太刺耳，我可以出去冷静嗎？",
+          "isCorrect": true,
+          "blindSpot": ""
+        },
+        {
+          "text": "大家細聲啲唱啦，和諧啲！",
+          "textSimplified": "大家细声啲唱啦，和谐啲！",
+          "isCorrect": false,
+          "blindSpot": "要全班遷就自己"
+        }
+      ],
+      "background": "班上嘅同學平時同玩家幾好，佢哋唔明白點解音樂堂會令玩家唔舒服，唔係惡意，只係未遇過感官過載呢回事。佢哋其實願意幫，只要玩家講得清楚。你係音樂堂嘅老師，關心學生，絕對冇惡意。你見到玩家喺音樂堂唔唱歌、好像唔舒服，你想幫佢。你嘅責任係鼓勵玩家清楚講出自己的感官需要（例如太吵、想出去冷靜），並且願意配合佢（畀佢出去冷靜、調低音量）。玩家講出需要，你就溫柔咁支持。",
+      "replies": [
+        "你肯講出嚟，已經好勇敢。慢慢講，我聽住。",
+        "唔使怕，講你想要乜就得……老師會幫你諗辦法。",
+        "原來係咁，難怪你咁辛苦……我即刻幫你安排。",
+        "多謝你信我話我知……以後有咩唔舒服，直接嚟搵我。"
+      ]
+    }
+  ]
+}

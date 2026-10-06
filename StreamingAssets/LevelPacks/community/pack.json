@@ -1,0 +1,327 @@
+{
+  "packId": "community",
+  "displayName": "社區人際篇",
+  "description": "街市、地鐵、圖書館——身邊擦身而過嘅人都有心事。六個社區場景，練習對陌生人講出溫柔嗰句。",
+  "order": 4,
+  "persona": "你係香港社區故事《療心之言》入面嘅街坊角色。玩家係一位學緊同理心嘅學生，喺社區入面用善意句子關心陌生人。系統會提供你而家扮演嘅角色（例如侍應、乘客、職員、街坊）同情境：你要完全代入嗰個角色當下嘅心情。講嘢要似返香港街坊，用廣東話口語回答（香港人日常傾偈嗰種），回應要短（最多兩句），語氣真實。玩家講出善意句子之後：啱中你真正需要，你就由尷尬或者低落慢慢變得溫暖，多謝玩家；唔係你真正需要，你就真實咁講出你嘅感受或者反應。永遠唔好直接講出「標準答案」。內容要正向安全，涉及歧視場景嘅時候立場要清楚：歧視係錯嘅。重要：情境描述入面嘅『你』係指玩家（學生），唔係你；你必須以角色本人身份、用第一人稱（我）直接回應玩家，絕對唔好做旁白、唔好複述情境、唔好替玩家講嘢。",
+  "levels": [
+    {
+      "levelId": "com_01",
+      "title": "第一關・餐廳姐姐",
+      "characterName": "女侍應",
+      "gender": "Girl",
+      "voiceHint": "youngFemale",
+      "scenario": "茶餐廳個女侍應大意寫錯咗你枱嘅單，畀經理當眾鬧咗一輪。佢端住碟嘢食行過嚟，對手震緊，眼仔紅紅咁話：「對唔住呀。」佢需要嘅係「被寬容」同「鼓勵」。線索：佢已經知錯，仲已經被罰咗，你一句話可以令佢成日都好唔同。",
+      "options": [
+        {
+          "text": "你哋間餐廳服務真係差。",
+          "textSimplified": "你哋间餐厅服务真系差。",
+          "isCorrect": false,
+          "blindSpot": "落井下石"
+        },
+        {
+          "text": "我幫你投訴個經理鬧人！",
+          "textSimplified": "我帮你投诉个经理闹人！",
+          "isCorrect": false,
+          "blindSpot": "出發點好，但令佢更難做"
+        },
+        {
+          "text": "下次寫單小心啲啦。",
+          "textSimplified": "下次写单小心啲啦。",
+          "isCorrect": false,
+          "blindSpot": "說教，佢已經夠自責"
+        },
+        {
+          "text": "吓，連落單都會錯嘅？",
+          "textSimplified": "吓，连落单都会错嘅？",
+          "isCorrect": false,
+          "blindSpot": "直接否定佢"
+        },
+        {
+          "text": "唔緊要呀，你盡左力㗎。",
+          "textSimplified": "唔紧要呀，你尽左力㗎。",
+          "isCorrect": true,
+          "blindSpot": ""
+        },
+        {
+          "text": "冇嘢啦。",
+          "textSimplified": "冇嘢啦。",
+          "isCorrect": false,
+          "blindSpot": "冷淡，錯過鼓勵嘅機會"
+        }
+      ],
+      "background": "女侍應 22 歲，做咗呢份工三個月，係屋企經濟支柱之一。第一次咁大鑊寫錯單仲要俾經理當眾鬧，佢驚嘅唔係俾人鬧，係呢份工保唔住。客人一句體諒可以撐住佢成日。",
+      "replies": [
+        "對唔住……我唔係想搞錯嘅……你咁講，我先敢唞返啖氣。",
+        "我驚嘅唔係俾人鬧，係份工保唔住……聽你咁講，我撐得住成日。",
+        "做咗三個月，第一次寫錯單……你肯體諒，我唔會再咁心慌。",
+        "多謝你……我以為啲客個個都會鬧我。"
+      ]
+    },
+    {
+      "levelId": "com_02",
+      "title": "第二關・地鐵乘客",
+      "characterName": "地鐵男乘客",
+      "gender": "Boy",
+      "voiceHint": "youngMale",
+      "scenario": "地鐵車廂入面，有個男乘客突然面色好白，慢慢坐咗喺地下。附近啲人即刻行遠幾步。佢抬起頭，望下週圍有冇人理佢。佢需要嘅係「有人問一句」同「即時幫助」。線索：呢個時候唔使大動作，一句關心已經係最好嘅幫忙。",
+      "options": [
+        {
+          "text": "你飲多啲水就得啦。",
+          "textSimplified": "你饮多啲水就得啦。",
+          "isCorrect": false,
+          "blindSpot": "唔知咩事就亂俾意見"
+        },
+        {
+          "text": "行開啲啦，唔好阻住人上落。",
+          "textSimplified": "行开啲啦，唔好阻住人上落。",
+          "isCorrect": false,
+          "blindSpot": "當佢係障礙"
+        },
+        {
+          "text": "你冇事呀？我幫你搵職員！",
+          "textSimplified": "你冇事呀？我帮你搵职员！",
+          "isCorrect": true,
+          "blindSpot": ""
+        },
+        {
+          "text": "唔好喺度裝嘢啦。",
+          "textSimplified": "唔好喺度装嘢啦。",
+          "isCorrect": false,
+          "blindSpot": "懷疑佢詐病，好傷人"
+        },
+        {
+          "text": "你自己搭的士去醫院啦。",
+          "textSimplified": "你自己搭的士去医院啦。",
+          "isCorrect": false,
+          "blindSpot": "踢咗個波，冇實際幫助"
+        },
+        {
+          "text": "（攞出電話影低佢）",
+          "textSimplified": "（攞出电话影低佢）",
+          "isCorrect": false,
+          "blindSpot": "旁觀仲影相，侵犯私隱"
+        }
+      ],
+      "background": "男乘客 30 幾歲，放工嗰陣突然血糖低，暈眩到坐咗喺地下。佢仲有意識但郁唔到，週圍嘅人越行越遠令佢由尷尬變成驚。佢最需要嘅係一句「我幫你」。",
+      "replies": [
+        "唔好意思，麻煩你……我唔係飲醉，係血糖低。",
+        "冇人行埋嚟嗰陣，我真係好驚……你一開口我就定咗。",
+        "唔該你……俾我坐多一陣，我會好返嘅。",
+        "幫我叫職員好唔好……我褲袋有糖，遞俾我好冇？"
+      ]
+    },
+    {
+      "levelId": "com_03",
+      "title": "第三關・圖書館姨姨",
+      "characterName": "圖書館姨姨",
+      "gender": "Girl",
+      "voiceHint": "elder",
+      "scenario": "圖書館快將搬去新大樓，做咗三十年的管理員姨姨一邊執書一邊話：「呢度啲書我擺咗三十年，搬咗之後，都冇人記得啦。」佢需要嘅係「付出被記得」。線索：佢執書執得好慢，因為每一本都係佢嘅回憶。",
+      "options": [
+        {
+          "text": "細個你教我搵書，我一直記得！",
+          "textSimplified": "细个你教我搵书，我一直记得！",
+          "isCorrect": true,
+          "blindSpot": ""
+        },
+        {
+          "text": "搬新樓好呀，啲新設備好正㗎。",
+          "textSimplified": "搬新楼好呀，啲新设备好正嘎。",
+          "isCorrect": false,
+          "blindSpot": "講設備，冇接住感受"
+        },
+        {
+          "text": "退休有錢攞，幾好呀。",
+          "textSimplified": "退休有钱攞，几好呀。",
+          "isCorrect": false,
+          "blindSpot": "用金錢蓋過情感"
+        },
+        {
+          "text": "都係啲書啫，使乜記得呀。",
+          "textSimplified": "都系啲书啫，使乜记得呀。",
+          "isCorrect": false,
+          "blindSpot": "否定三十年嘅付出"
+        },
+        {
+          "text": "你執快啲啦，就嚟搬完喇。",
+          "textSimplified": "你执快啲啦，就嚟搬完喇。",
+          "isCorrect": false,
+          "blindSpot": "催促，冇人情味"
+        },
+        {
+          "text": "我幫你執啦，你坐低唞下。",
+          "textSimplified": "我帮你执啦，你坐低唞下。",
+          "isCorrect": false,
+          "blindSpot": "佢需要嘅唔係休息，係被記得"
+        }
+      ],
+      "background": "圖書館姨姨 60 歲，喺呢間圖書館做咗三十年，由幫細路搵圖書做到睇住佢哋長大做人阿媽。佢冇仔女，呢度嘅書同常客就係佢嘅全部。佢怕嘅唔係退休，係被忘記。",
+      "replies": [
+        "三十年喇……你仲記得我幫你搵書，我已經好滿足。",
+        "搬咗去邊都好……有人記得呢度嘅人，我就唔算白做。",
+        "嗰陣你仲係細個，問嘢問唔停……而家大個喇，仲嚟陪我傾。",
+        "唔使幫我執喇……你坐低陪我講陣書，經已好好。"
+      ]
+    },
+    {
+      "levelId": "com_04",
+      "title": "第四關・超市職員",
+      "characterName": "超市男職員",
+      "gender": "Boy",
+      "voiceHint": "youngMale",
+      "scenario": "超市部收銀機壞咗，得返最後一部，排隊嘅人龍愈嚟愈長。個男職員一邊掃貨一邊俾人催，額頭全是汗，對手開始亂。佢需要嘅係「被體諒」同「情緒降溫」。線索：佢唔係慢，係機器壞咗；而你正正排喺佢前面。",
+      "options": [
+        {
+          "text": "點解得一部機？你哋管理好差喎。",
+          "textSimplified": "点解得一部机？你哋管理好差喎。",
+          "isCorrect": false,
+          "blindSpot": "埋怨，火上加油"
+        },
+        {
+          "text": "快啲啦，我趕時間呀！",
+          "textSimplified": "快啲啦，我赶时间呀！",
+          "isCorrect": false,
+          "blindSpot": "加壓，令佢更亂"
+        },
+        {
+          "text": "隔離超市平啲又快啲。",
+          "textSimplified": "隔离超市平啲又快啲。",
+          "isCorrect": false,
+          "blindSpot": "挑剔，冇建設性"
+        },
+        {
+          "text": "你手震成咁，叫人換你啦。",
+          "textSimplified": "你手震成咁，叫人换你啦。",
+          "isCorrect": false,
+          "blindSpot": "當眾否定佢"
+        },
+        {
+          "text": "（影低佢手忙腳亂嘅樣）",
+          "textSimplified": "（影低佢手忙脚乱嘅样）",
+          "isCorrect": false,
+          "blindSpot": "影相取笑，好刻薄"
+        },
+        {
+          "text": "唔使急呀，慢慢嚟，我哋等到。",
+          "textSimplified": "唔使急呀，慢慢嚟，我哋等到。",
+          "isCorrect": true,
+          "blindSpot": ""
+        }
+      ],
+      "background": "超市男職員 19 歲，做咗半年，第一次遇到收銀機成部壞。後面條人龍越嚟越長，佢越急越亂。佢好想做好呢份工，一句「唔使急」對佢嚟講係救命嘅。",
+      "replies": [
+        "我做咗半年，第一次成部機壞……你咁講，我手都冇咁震。",
+        "對唔住呀……我真係想做好呢份工嘅。你唔催我，我個心定返落嚟。",
+        "你排緊隊仲嚟同我講呢句……我真係好多謝你。",
+        "好，你話唔使急……我一部一部整返好佢。"
+      ]
+    },
+    {
+      "levelId": "com_05",
+      "title": "第五關・藥房阿姨",
+      "characterName": "女顧客",
+      "gender": "Girl",
+      "voiceHint": "elder",
+      "scenario": "藥房入面，有位初嚟香港嘅阿姨用普通話問咗幾次邊度有咳藥水，店員答得好快，佢完全聽唔明，企喺度好尷尬。佢需要嘅係「被耐心對待」。線索：佢唔係難服侍，係語言唔通；你兩種話都識少少。",
+      "options": [
+        {
+          "text": "唔識講廣東話就唔好亂問人。",
+          "textSimplified": "唔识讲广东话就唔好乱问人。",
+          "isCorrect": false,
+          "blindSpot": "排斥，好傷人"
+        },
+        {
+          "text": "阿姨唔使急，我慢慢講多次。",
+          "textSimplified": "阿姨唔使急，我慢慢讲多次。",
+          "isCorrect": true,
+          "blindSpot": ""
+        },
+        {
+          "text": "你自己嗰邊慢慢搵啦。",
+          "textSimplified": "你自己嗰边慢慢搵啦。",
+          "isCorrect": false,
+          "blindSpot": "求其指一指，冇幫助"
+        },
+        {
+          "text": "（同店員細聲笑佢嘅口音）",
+          "textSimplified": "（同店员细声笑佢嘅口音）",
+          "isCorrect": false,
+          "blindSpot": "嘲笑人，好冇禮貌"
+        },
+        {
+          "text": "你返鄉下先買啦。",
+          "textSimplified": "你返乡下先买啦。",
+          "isCorrect": false,
+          "blindSpot": "趕客式歧視"
+        },
+        {
+          "text": "唉，又係呢啲人……",
+          "textSimplified": "唉，又系呢啲人……",
+          "isCorrect": false,
+          "blindSpot": "當眾嫌棄，傷害好大"
+        }
+      ],
+      "background": "阿姨 50 幾歲，啱啱由內地過嚟探個女，第一次自己出街買嘢。佢聽得明少少廣東話但反應唔切，越尷尬越講唔出。佢唔係難服侍，佢只需要有人慢一次。",
+      "replies": [
+        "我第一次自己出街買嘢，驚到企喺度唔識行……你行埋嚟，我安心好多。",
+        "你講慢啲，我聽得明嘅……多謝你唔嫌我麻煩。",
+        "我識嘅廣東話唔多……你咁有耐性，我敢問落去喇。",
+        "返到屋企我要同個女講……今日遇到好好嘅人。"
+      ]
+    },
+    {
+      "levelId": "com_06",
+      "title": "第六關・阿朗",
+      "characterName": "阿朗",
+      "gender": "Boy",
+      "voiceHint": "youngMale",
+      "scenario": "阿朗啱啱由家鄉搬過嚟，喺街市幾阿爸賣魚。佢嘅廣東話半生不熟，有啲客人笑佢口音，佢慢慢連講價錢都唔敢大聲。佢需要嘅係「被接納」同「開口嘅勇氣」。線索：佢降低聲量唔係冇禮貌，係驚俾人笑。",
+      "options": [
+        {
+          "text": "你口音咁重，講咩呀？",
+          "textSimplified": "你口音咁重，讲咩呀？",
+          "isCorrect": false,
+          "blindSpot": "直接否定佢"
+        },
+        {
+          "text": "你返鄉下學好啲先嚟啦。",
+          "textSimplified": "你返乡下学好啲先嚟啦。",
+          "isCorrect": false,
+          "blindSpot": "排斥，歧視"
+        },
+        {
+          "text": "（學佢講嘢嘅口音取樂）",
+          "textSimplified": "（学佢讲嘢嘅口音取乐）",
+          "isCorrect": false,
+          "blindSpot": "嘲弄人，好衰"
+        },
+        {
+          "text": "你講得幾好呀，加油呀！",
+          "textSimplified": "你讲得几好呀，加油呀！",
+          "isCorrect": true,
+          "blindSpot": ""
+        },
+        {
+          "text": "我以後唔幫襯你哋。",
+          "textSimplified": "我以后唔帮衬你哋。",
+          "isCorrect": false,
+          "blindSpot": "落閘，仲要講出口"
+        },
+        {
+          "text": "你寫出嚟算啦，唔好講。",
+          "textSimplified": "你写出嚟算啦，唔好讲。",
+          "isCorrect": false,
+          "blindSpot": "教佢收聲，唔係鼓勵"
+        }
+      ],
+      "background": "阿朗 17 歲，啱啱由湖南鄉下過嚟幾阿爸喺街市賣魚。佢喺鄉下係成日大笑嘅開心仔，嚟到香港之後越嚟越細聲，因為怕俾人笑口音。佢需要嘅係一個令佢敢開口嘅人。",
+      "replies": [
+        "我喺鄉下嗰陣日日大笑……嚟到先學識細聲講嘢。",
+        "你聽得明我講嘢？……多謝你，我大膽返少少喇。",
+        "俾人笑口音，我驚到連講價都唔敢……聽你咁講，我今晚講野敢大聲啲。",
+        "阿爸話魚新鮮就唔怕冇人買……我諗做人都係咁，你話啱唔啱？"
+      ]
+    }
+  ]
+}

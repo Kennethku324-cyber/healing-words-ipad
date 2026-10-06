@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-HK">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>語音幀率對照</title>
+<style>
+body{margin:24px;background:#18131c;color:#fce7f3;font:17px -apple-system,sans-serif;line-height:1.6}
+main{max-width:700px;margin:auto}button{font:inherit;padding:10px 18px;margin:8px 8px 8px 0;border-radius:12px;border:0}
+canvas{display:block;width:100%;height:90px;background:#302436;border-radius:16px}
+textarea{box-sizing:border-box;width:100%;height:280px;margin-top:16px;background:#241a29;color:#fce7f3;font:12px monospace;padding:12px}
+#state{min-height:32px;color:#f9a8d4}
+</style>
+<main>
+<h1>語音幀率對照</h1>
+<p>用 iPad Safari 開啟。先等 10 秒，再開始辨識，等顯示「聆聽中」後讀出遊戲字卡，講完按停止。重複 5 次，每次停止後等 10 秒。</p>
+<p>呢頁只測試相同嘅廣東話辨識，冇載入遊戲。將記錄同遊戲比較，可以分辨掉幀是否需要遊戲同時運行先會發生。</p>
+<canvas id="motion" width="700" height="90"></canvas>
+<p id="meter">量度中……</p>
+<div id="state">未開始</div>
+<button id="start">開始辨識</button><button id="stop" disabled>停止</button><button id="copy">複製記錄</button>
+<textarea id="log" readonly aria-label="診斷記錄"></textarea>
+</main>
+<script>
+(function () {
+  var output = document.getElementById('log'), state = document.getElementById('state');
+  var start = document.getElementById('start'), stop = document.getElementById('stop');
+  var canvas = document.getElementById('motion'), paint = canvas.getContext('2d');
+  var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  var recognition = null, round = 0, phase = '非錄音', watchdog = null;
+  var started = performance.now(), windowAt = started, lastFrame = started;
+  var frameCount = 0, maxGap = 0, maxTimerDelay = 0;
+  function log(text) {
+    output.value += ((performance.now() - started) / 1000).toFixed(2) + 's ' + text + '\n';
+    output.scrollTop = output.scrollHeight;
+  }
+  function finish(r) {
+    if (recognition !== r) return;
+    recognition = null; clearTimeout(watchdog);
+    phase = '非錄音'; start.disabled = !SR; stop.disabled = true;
+  }
+  function arm(r) {
+    clearTimeout(watchdog);
+    watchdog = setTimeout(function () {
+      if (recognition !== r) return;
+      log('15 秒冇辨識活動，取消本輪'); finish(r); r.abort(); state.textContent = '已取消，可以再試';
+    }, 15000);
+  }
+  start.onclick = function () {
+    if (!SR || recognition) return;
+    var r = new SR(); recognition = r; round++; phase = '辨識中';
+    r.lang = 'zh-HK'; r.continuous = true; r.interimResults = true; r.maxAlternatives = 1;
+    start.disabled = true; stop.disabled = false; state.textContent = '準備中……';
+    log('第 ' + round + ' 輪 start');
+    r.onstart = function () { if (recognition !== r) return; log('onstart'); arm(r); };
+    r.onaudiostart = function () { if (recognition !== r) return; state.textContent = '聆聽中，可以開口'; log('onaudiostart'); arm(r); };
+    r.onresult = function (ev) {
+      if (recognition !== r) return;
+      arm(r); var text = '';
+      for (var i = ev.resultIndex; i < ev.results.length; i++) {
+        text += ev.results[i][0].transcript;
+        if (ev.results[i].isFinal) log('final「' + ev.results[i][0].transcript + '」');
+      }
+      state.textContent = '聽到「' + text + '」';
+    };
+    r.onerror = function (ev) { if (recognition !== r) return; log('error ' + ev.error); finish(r); state.textContent = ev.error; try {r.abort();} catch(e) {} };
+    r.onend = function () { if (recognition !== r) return; log('onend'); finish(r); };
+    try { arm(r); r.start(); } catch (e) { log(String(e)); finish(r); }
+  };
+  stop.onclick = function () { if (recognition) {phase = '收尾中'; log('stop'); recognition.stop();} };
+  document.getElementById('copy').onclick = async function () {
+    try { await navigator.clipboard.writeText(output.value); state.textContent = '已複製記錄'; }
+    catch(e) {output.focus(); output.select(); state.textContent = '請長按記錄複製';}
+  };
+  function frame(now) {
+    frameCount++; maxGap = Math.max(maxGap, now - lastFrame); lastFrame = now;
+    paint.clearRect(0, 0, 700, 90); paint.fillStyle = '#f472b6';
+    paint.beginPath(); paint.arc(25 + (now / 4) % 650, 45, 15, 0, Math.PI * 2); paint.fill();
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+  var lastTimer = performance.now();
+  setInterval(function () {
+    var now = performance.now();
+    maxTimerDelay = Math.max(maxTimerDelay, Math.max(0, now - lastTimer - 250)); lastTimer = now;
+    if (now - windowAt < 5000) return;
+    var line = (frameCount * 1000 / (now - windowAt)).toFixed(1) + 'fps [' + phase +
+      '] 最大幀距 ' + Math.round(maxGap) + 'ms；timer 延遲 ' + Math.round(maxTimerDelay) + 'ms';
+    document.getElementById('meter').textContent = line; log(line);
+    frameCount = 0; maxGap = 0; maxTimerDelay = 0; windowAt = now;
+  }, 250);
+  log(navigator.userAgent); log('原生 Web Speech：zh-HK / continuous / interim，沒有 Unity 或音訊暖場');
+  if (!SR) {start.disabled = true; state.textContent = '瀏覽器不支援語音辨識';}
+})();
+</script>
+</html>
